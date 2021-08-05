@@ -19,9 +19,19 @@ spam_system(PyObject *self, PyObject *args)
     return PyLong_FromLong(sts);
 }
 
+static PyObject *
+spam_hello(PyObject *self, PyObject *args)
+{
+    (void)system("echo hello");
+
+    return PyLong_FromLong(0);
+}
+
 static PyMethodDef SpamMethods[] = {
     {"system",  spam_system, METH_VARARGS,
      "Execute a shell command."},
+    {"hello", spam_hello, METH_VARARGS,
+     "Echo Hello."},
     {NULL, NULL, 0, NULL}        /* Sentinel */
 };
 
