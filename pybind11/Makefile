@@ -1,3 +1,5 @@
+$(CURDIR)/Makefile Makefile: ;
+
 CCFLAGS := -O3 -Wall -shared -std=c++11 -fPIC
 CCFLAGS += -I$(CURDIR)/pybind11/include
 CCFLAGS += -I/mnt/d/wslcache/env/anaconda3/include/python3.8
@@ -18,3 +20,9 @@ struct_wrapper.so: struct_wrapper.cc struct_internal.h struct_internal.so
 	$(CC) struct_wrapper.cc struct_internal.h $(CURDIR)/struct_internal.so -o $@ $(CCFLAGS)
 
 struct: struct_wrapper.so struct_internal.so
+	@:
+
+dtype.so: dtype.cc
+	$(CC) $^ -o $@ $(CCFLAGS) $(LDFLAGS)
+dtype: dtype.so
+	@:
