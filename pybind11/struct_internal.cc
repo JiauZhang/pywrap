@@ -15,4 +15,6 @@ void set_age(int age) {
     data.age = age;
 }
 
-PYBIND11_MODULE(struct_internal, m) {}
+PYBIND11_MODULE(struct_internal, m) {
+    std::cout << "struct_internal.so online." << std::endl;
+}

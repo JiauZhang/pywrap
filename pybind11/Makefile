@@ -15,6 +15,6 @@ struct_internal.so: struct_internal.cc struct_internal.h
 	$(CC) $^ -o $@ $(CCFLAGS) $(LDFLAGS)
 
 struct_wrapper.so: struct_wrapper.cc struct_internal.h struct_internal.so
-	$(CC) struct_wrapper.cc struct_internal.h -o $@ $(CCFLAGS) -L $(CURDIR)/struct_internal.so
+	$(CC) struct_wrapper.cc struct_internal.h $(CURDIR)/struct_internal.so -o $@ $(CCFLAGS)
 
 struct: struct_wrapper.so struct_internal.so
